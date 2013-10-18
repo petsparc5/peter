@@ -1,0 +1,25 @@
+---
+Restaurant Name:Karesz
+Foods:
+- ID:k1
+  Description:Hagymas Rantotta
+  Price:450
+- ID:k2
+  Description:Ham and Eggs
+  Price:540
+- ID:k3
+  Description:Kroasszon
+  Price:320
+---
+Restaurant Name:Mercello
+Foods:
+- ID:m1
+  Description:Margherita
+  Price:250
+- ID:m2
+  Description:Grilled Cat
+  Price:890
+- ID:m3
+  Description:Ostriga
+  Price:1490
+...
