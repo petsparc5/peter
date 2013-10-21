@@ -1,89 +1,92 @@
 package com.eggs.impl;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
-import com.eggs.Foods;
-import com.eggs.Restor;
+import com.eggs.Food;
+import com.eggs.Menu;
+import com.eggs.Restaurant;
+import com.eggs.MenuList;
 
 public class Writer {
 	
 	private void maker() {
 		
-		Restor restor1 = new Restor();
-		Restor restor2 = new Restor();
+		Menu menu1 = new Menu();
+		Menu menu2 = new Menu();
+		Restaurant restaurant1 = new Restaurant();
+		Restaurant restaurant2 = new Restaurant();
 		
-		restor1.setname("Karesz");
-		restor2.setname("Marcello");
+		restaurant1.setName("Karesz");
+		restaurant2.setName("Marcello");
 		
-		Foods foods1 = new Foods();
-		Foods foods2 = new Foods();
-		Foods foods3 = new Foods();
-		Foods foods4 = new Foods();
-		Foods foods5 = new Foods();
-		Foods foods6 = new Foods();
+		menu1.setRestaurant(restaurant1);
+		menu2.setRestaurant(restaurant2);
+		
+		Food food1 = new Food();
+		Food food2 = new Food();
+		Food food3 = new Food();
+		Food food4 = new Food();
+		Food food5 = new Food();
+		Food food6 = new Food();
 		
 		
-		foods1.setDesc("Hagymas Rantotta");
-		foods1.setId("k1");
-		foods1.setPrice(450);
+		food1.setName("Hagymas Rantotta");
+		food1.setId("k1");
+		food1.setPrice(450);
 		
-		foods2.setDesc("Ham and Eggs");
-		foods2.setId("k2");
-		foods2.setPrice(540);
+		food2.setName("Ham and Eggs");
+		food2.setId("k2");
+		food2.setPrice(540);
 
-		foods3.setDesc("Kroasszon");
-		foods3.setId("k3");
-		foods3.setPrice(320);
+		food3.setName("Kroasszon");
+		food3.setId("k3");
+		food3.setPrice(320);
 		
-		foods4.setDesc("Margherita");
-		foods4.setId("m1");
-		foods4.setPrice(250);
+		food4.setName("Margherita");
+		food4.setId("m1");
+		food4.setPrice(250);
 		
-		foods5.setDesc("Grilled Cat");
-		foods5.setId("m2");
-		foods5.setPrice(890);
+		food5.setName("Grilled Cat");
+		food5.setId("m2");
+		food5.setPrice(890);
 		
-		foods6.setDesc("Ostriga");
-		foods6.setId("m3");
-		foods6.setPrice(1490);
+		food6.setName("Ostriga");
+		food6.setId("m3");
+		food6.setPrice(1490);
 		
-		List<Foods> foodslist1 = new ArrayList<Foods>();
-		List<Foods> foodslist2 = new ArrayList<Foods>();
+		List<Food> foodlist1 = new ArrayList<Food>();
+		List<Food> foodlist2 = new ArrayList<Food>();
 		
-		foodslist1.add(foods1);
-		foodslist1.add(foods2);
-		foodslist1.add(foods3);
-		foodslist2.add(foods4);
-		foodslist2.add(foods5);
-		foodslist2.add(foods6);
+		foodlist1.add(food1);
+		foodlist1.add(food2);
+		foodlist1.add(food3);
+		foodlist2.add(food4);
+		foodlist2.add(food5);
+		foodlist2.add(food6);
 		
-		restor1.setFoods(foodslist1);
-		restor2.setFoods(foodslist2);
+		menu1.setFoodList(foodlist1);
+		menu2.setFoodList(foodlist2);
 		
-		
-		Yaml yaml1 = new Yaml();
-		
-		List<Restor> finallist = new LinkedList<Restor>();
-		finallist.add(restor1);
-		finallist.add(restor2);
-		
+		MenuList menulist = new MenuList();
+		menulist.addMenuList(menu1);
+		menulist.addMenuList(menu2);
+				
 	    DumperOptions options = new DumperOptions();
 	    options.setExplicitStart(true);
 	    Yaml yaml = new Yaml(options);
-	    System.out.println(yaml.dumpAll(finallist.iterator()));
+	    System.out.println(yaml.dump(menulist));
 	}
 	
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		
 		Writer w = new Writer();
 		w.maker();
 	}
-	*/
+	
 	
 
 }

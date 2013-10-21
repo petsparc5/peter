@@ -1,12 +1,12 @@
---- !!com.eggs.Restor
-foods:
-- {desc: Hagymas Rantotta, id: k1, price: 450.0}
-- {desc: Ham and Eggs, id: k2, price: 540.0}
-- {desc: Kroasszon, id: k3, price: 320.0}
-name: Karesz
---- !!com.eggs.Restor
-foods:
-- {desc: Margherita, id: m1, price: 250.0}
-- {desc: Grilled Cat, id: m2, price: 890.0}
-- {desc: Ostriga, id: m3, price: 1490.0}
-name: Marcello
+--- !!com.eggs.MenuList
+menuList:
+- foodList:
+  - {id: k3, name: Kroasszon, price: 320.0}
+  - {id: k1, name: Hagymas Rantotta, price: 450.0}
+  - {id: k2, name: Ham and Eggs, price: 540.0}
+  restaurant: {name: Karesz}
+- foodList:
+  - {id: m1, name: Margherita, price: 250.0}
+  - {id: m2, name: Grilled Cat, price: 890.0}
+  - {id: m3, name: Ostriga, price: 1490.0}
+  restaurant: {name: Marcello}

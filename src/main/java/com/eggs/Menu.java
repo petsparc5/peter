@@ -18,6 +18,11 @@ public class Menu {
 		ArrayList list = new ArrayList(foodMap.values());
 		return list;
 	}
+	public void setFoodList(List<Food> foodlist) {
+		for (int i = 0; i<foodlist.size(); i++) {
+			foodMap.put(foodlist.get(i).getId(), foodlist.get(i));
+		}
+	}
 	public void setFoodMap(Map<String, Food> foodMap) {
 		this.foodMap = foodMap;
 	}

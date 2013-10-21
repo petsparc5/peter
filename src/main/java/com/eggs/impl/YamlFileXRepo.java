@@ -11,11 +11,11 @@ import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
-import com.eggs.Foods;
+import com.eggs.Food;
 import com.eggs.Menu;
 import com.eggs.MenuBuilder;
+import com.eggs.MenuList;
 import com.eggs.MenuRepository;
-import com.eggs.Restor;
 
 public class YamlFileXRepo implements MenuRepository {
 	
@@ -30,22 +30,24 @@ public class YamlFileXRepo implements MenuRepository {
 	
 	private void processRestaurant() {
 		
-		Constructor constructor = new Constructor(Restor.class);
-		TypeDescription RestorDescription = new TypeDescription(Restor.class);
-		RestorDescription.putListPropertyType("foods", Foods.class);
+		Constructor constructor = new Constructor(MenuList.class);
+		TypeDescription RestorDescription = new TypeDescription(MenuList.class);
+		RestorDescription.putListPropertyType("foods", Menu.class);
 		constructor.addTypeDescription(RestorDescription);
 		Yaml yaml = new Yaml(constructor);
 		
 		InputStream input;
 		try {
 			input = new FileInputStream(new File("C:/Users/tmp/Breakfast/rantotta/src/main/resources/Menus.yaml"));
-	        for (Object data : yaml.loadAll(input)) {
-	        	Restor restor = (Restor) data;
-	        	MenuBuilder builder = MenuBuilder.menu().restaurant(restor.getname());
-	        	List<Foods> foods = restor.getFoods();
-	        	builder.food(foods.get(0).getId(), foods.get(0).getDesc(), foods.get(0).getPrice());
-	        	builder.food(foods.get(1).getId(), foods.get(1).getDesc(), foods.get(1).getPrice());
-	        	builder.food(foods.get(2).getId(), foods.get(2).getDesc(), foods.get(2).getPrice());
+	        MenuList menulist = (MenuList) yaml.load(input);
+	        List<Menu> list = menulist.getMenuList();
+	        for (int i= 0; i<list.size(); i++) {
+	        	
+	        	MenuBuilder builder = MenuBuilder.menu().restaurant(list.get(i).getRestaurant().getName());
+	        	List<Food> foodlist = list.get(i).getFoodList();
+	        	builder.food(foodlist.get(0).getId(), foodlist.get(0).getName(), foodlist.get(0).getPrice());
+	        	builder.food(foodlist.get(1).getId(), foodlist.get(1).getName(), foodlist.get(1).getPrice());
+	        	builder.food(foodlist.get(2).getId(), foodlist.get(2).getName(), foodlist.get(2).getPrice());
 	        	menus.add(builder.build());
 	        }
    
