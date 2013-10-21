@@ -1,0 +1,12 @@
+--- !!com.eggs.Restor
+foods:
+- {desc: Hagymas Rantotta, id: k1, price: 450.0}
+- {desc: Ham and Eggs, id: k2, price: 540.0}
+- {desc: Kroasszon, id: k3, price: 320.0}
+name: Karesz
+--- !!com.eggs.Restor
+foods:
+- {desc: Margherita, id: m1, price: 250.0}
+- {desc: Grilled Cat, id: m2, price: 890.0}
+- {desc: Ostriga, id: m3, price: 1490.0}
+name: Marcello
